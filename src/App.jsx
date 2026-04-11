@@ -1,39 +1,31 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import HeroSection from "./components/HeroSection";
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import Layout from './pages/Layout';
+import Home from './pages/Home';
+import NotFoundPage from './pages/NotFoundPage';
+import Products from './pages/Products';
+import SkinQuiz from './pages/SkinQuiz';
+import Orders from './pages/Orders';
+import SignIn from './pages/SignIn';
+import SignOut from './pages/SignOut';
+import SignUp from './pages/SignUp';
 
-import LaboratoryFavorites from "./components/LaboratoryFavorites";
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'products', element: <Products /> },
+      { path: 'skin-quiz', element: <SkinQuiz /> },
+      { path: 'orders', element: <Orders /> },
+      { path: 'sign-in', element: <SignIn /> },
+      { path: 'sign-out', element: <SignOut /> },
+      { path: 'sign-up', element: <SignUp /> },
+      { path: '*', element: <NotFoundPage /> },
+    ],
+  },
+]);
+
 export default function App() {
-  return (
-    <>
-      <Navbar />
-      <HeroSection />
-      <LaboratoryFavorites />
-      <StartQuizSection />
-      <Footer />
-    </>
-  );
-}
-
-function StartQuizSection() {
-  return (
-    <section className="py-12 px-2 md:px-8">
-      <div id="StartQuizSection" className="p-10 h-100 rounded-lg flex items-center w-full">
-        <div className="lg:w-1/2 ">
-          <p className="text-white-70 font-bold text-xs mb-5">
-            PERSONALIZED REGIMEN
-          </p>
-          <h3 className="text-white text-5xl font-bold mb-5">
-            Mirror of Science
-          </h3>
-          <p className="font-normal text-lg mb-3 text-white-80">
-            Data is the foundation of beauty. Take our advanced Skin Quiz to
-            find your personalized clinical regimen tailored to your unique
-            microbiome.
-          </p>
-          <button className="bg-[#FBF9F7] py-4 px-10 rounded-sm text-sm font-bold text-[#272727]">START SKIN QUIZ</button>
-        </div>
-      </div>
-    </section>
-  );
+  return <RouterProvider router={router} />;
 }

@@ -1,7 +1,10 @@
 export default function StartQuizSection() {
   return (
     <section className="py-12 px-2 md:px-8">
-      <div id="StartQuizSection" className="p-10 h-100 rounded-lg flex items-center w-full">
+      <div
+        id="StartQuizSection"
+        className="p-10 h-100 rounded-lg flex items-center w-full"
+      >
         <div className="lg:w-1/2 ">
           <p className="text-white-70 font-bold text-xs mb-5">
             PERSONALIZED REGIMEN
@@ -14,7 +17,9 @@ export default function StartQuizSection() {
             find your personalized clinical regimen tailored to your unique
             microbiome.
           </p>
-          <button className="bg-[#FBF9F7] py-4 px-10 rounded-sm text-sm font-bold text-[#272727]">START SKIN QUIZ</button>
+          <button className="bg-[#FBF9F7] py-4 px-10 rounded-sm text-sm font-bold text-[#272727]">
+            START SKIN QUIZ
+          </button>
         </div>
       </div>
     </section>

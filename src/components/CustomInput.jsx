@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CustomInput({id,label,...props}) {
+export default function CustomInput({ id, label, ...props }) {
   return (
     <div className="mt-6">
       <label
@@ -9,8 +9,8 @@ export default function CustomInput({id,label,...props}) {
       >
         {label}
       </label>
-          <input
-              id={id}
+      <input
+        id={id}
         {...props}
         className="text-base font-normal py-3 outline-0 border-b boder-b-[#C4C6CD] w-full"
         placeholder="name@example.com"

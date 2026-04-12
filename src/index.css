@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" 
 
 body { 
   font-family: 'Times New Roman', Times, serif;
@@ -60,6 +60,11 @@ body {
 }
 .active {
   border-bottom: 1px solid #0F172A;
-  font-weight: bold;
+  font-weight: 600;
   color: #0F172A;
+}
+
+.dark .active {
+  border-bottom: 1px solid #F0E8D5;
+  color: #F0E8D5;
 }

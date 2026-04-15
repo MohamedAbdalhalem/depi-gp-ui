@@ -1,10 +1,9 @@
 import { Link } from "react-router";
-import CustomInput from "../components/CustomInput";
-
+import SingInForm from "../components/SingInForm";
 export default function SignIn() {
   return (
-    <section className="bg-base-100 min-h-screen pt-4 pb-12 flex items-center justify-center">
-      <div className="grid lg:grid-cols-7 w-full md:w-4/5 mx-auto rounded-3xl overflow-hidden shadow-2xl bg-base-100 border border-base-300 h-[calc(100vh-6rem)]">
+    <section className="bg-base-100 min-h-screen pt-4 pb-12 flex items-center justify-center px-2">
+      <div className="grid lg:grid-cols-7 w-full md:w-4/5 mx-auto rounded-3xl overflow-hidden shadow-2xl bg-base-100 border border-base-300 ">
         {/* LEFT PART */}
         <div
           id="sign-in-leftPart"
@@ -48,46 +47,32 @@ export default function SignIn() {
             <p className="text-base-content/70 text-base font-normal mb-8">
               Access your personalized clinical regimen.
             </p>
-            <form action="">
-              <div className="space-y-4">
-                <CustomInput
-                  id={"email"}
-                  label={"EMAIL ADDRESS"}
-                  type={"text"}
-                />
-                <CustomInput
-                  id={"password"}
-                  label={"PASSWORD"}
-                  type={"password"}
-                />
-              </div>
-              <button className="btn btn-neutral w-full mt-8 mb-8 rounded-xl text-xs font-semibold uppercase tracking-widest text-neutral-content">
-                SIGN IN
-              </button>
-              <div className="bg-base-300 h-[1px] relative mb-8">
-                <span className="bg-base-100 text-[10px] uppercase font-semibold px-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base-content/40">
-                  OR
-                </span>
-              </div>
-              <p className="text-sm font-light text-center text-base-content/70">
-                New to Lumière?{" "}
-                <Link
-                  to="/sign-up"
-                  className="text-sm font-semibold text-base-content hover:text-primary transition underline underline-offset-4 ms-2"
-                >
-                  Create Account
-                </Link>
-              </p>
 
-              <div className="flex justify-center mt-12 flex-wrap gap-3">
-                <div className="py-2 px-4 text-base-content/60 text-[10px] font-semibold tracking-wider bg-base-200 rounded-xl uppercase">
-                  Safe for all skins
-                </div>
-                <div className="py-2 px-4 text-base-content/60 text-[10px] font-semibold tracking-wider bg-base-200 rounded-xl uppercase">
-                  Dermatologist Verified
-                </div>
+            <SingInForm />
+
+            <div className="bg-base-300 h-px relative mb-8">
+              <span className="bg-base-100 text-[10px] uppercase font-semibold px-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base-content/40">
+                OR
+              </span>
+            </div>
+            <p className="text-sm font-light text-center text-base-content/70">
+              New to Lumière?{" "}
+              <Link
+                to="/sign-up"
+                className="text-sm font-semibold text-base-content hover:text-primary transition underline underline-offset-4 ms-2"
+              >
+                Create Account
+              </Link>
+            </p>
+
+            <div className="flex justify-center mt-12 flex-wrap gap-3">
+              <div className="py-2 px-4 text-base-content/60 text-[10px] font-semibold tracking-wider bg-base-200 rounded-xl uppercase">
+                Safe for all skins
               </div>
-            </form>
+              <div className="py-2 px-4 text-base-content/60 text-[10px] font-semibold tracking-wider bg-base-200 rounded-xl uppercase">
+                Dermatologist Verified
+              </div>
+            </div>
           </div>
         </div>
       </div>

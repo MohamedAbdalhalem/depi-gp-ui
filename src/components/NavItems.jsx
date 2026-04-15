@@ -5,10 +5,10 @@ const NAV_ITEMS = [
   { to: "/products", label: "Products" },
   { to: "/orders", label: "Orders" },
   { to: "/addresses", label: "Addresses" },
-  { to: "/sign-in", label: "Sign-in" },
 ];
 
 export default function NavItems() {
+ 
   return (
     <>
       {NAV_ITEMS.map(({ to, label }) => (

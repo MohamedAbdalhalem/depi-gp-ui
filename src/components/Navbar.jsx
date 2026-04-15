@@ -8,9 +8,10 @@ import NavItems from "./NavItems";
 import { Link, NavLink } from "react-router";
 
 export default function Navbar() {
+  const tkn = localStorage.getItem("tkn");
   function handleDarkMode() {
     if (localStorage.getItem("data-theme") === "dark") {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
       localStorage.removeItem("data-theme");
     } else {
       document.documentElement.classList.add("dark");
@@ -19,13 +20,14 @@ export default function Navbar() {
   }
 
   (function setDarkMode() {
-    
     if (localStorage.getItem("data-theme") === "dark") {
-      document.documentElement.classList.add('dark');
-    } 
-    
+      document.documentElement.classList.add("dark");
+    }
   })();
 
+  function handleSignOut() {
+    localStorage.removeItem('tkn')
+  }
   return (
     <div className="navbar bg-base-100 shadow-sm px-2 md:px-8">
       <div className="navbar-start">
@@ -48,12 +50,22 @@ export default function Navbar() {
           </div>
           <ul
             tabIndex={-1}
-            className=" dropdown-content bg-base-100  rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className=" dropdown-content bg-base-100  rounded-box z-20 mt-3 w-52 p-2 shadow"
           >
-            <NavItems />
-            <li>
-              <p className="pb-1">Sign-out</p>
-            </li>
+            {tkn ? (
+              <NavItems />
+            ) : (
+              <>
+                <li>
+                  <p onClick={handleSignOut} className="pb-1">Sign-out</p>
+                </li>
+                <li>
+                  <NavLink to="/sign-in" className="pb-1">
+                    Sign-in
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <Link to="/" className="text-xl no-underline">
@@ -62,10 +74,20 @@ export default function Navbar() {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className=" menu-horizontal gap-8 px-1">
-          <NavItems />
-          <li>
-            <p className="pb-1">Sign-out</p>
-          </li>
+          {tkn ? (
+            <NavItems />
+          ) : (
+            <>
+              <li>
+                <p onClick={handleSignOut} className="pb-1">Sign-out</p>
+              </li>
+              <li>
+                <NavLink to="/sign-in" className="pb-1">
+                  Sign-in
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="navbar-end gap-3">
@@ -74,12 +96,12 @@ export default function Navbar() {
           className="cursor-pointer"
           icon={faMoon}
         />
-        <NavLink to="/profile">
+        {tkn && <NavLink to="/profile">
           <FontAwesomeIcon className="cursor-pointer" icon={faCircleUser} />
-        </NavLink>
-        <NavLink to="/cart">
+        </NavLink>}
+        {tkn && <NavLink to="/cart">
           <FontAwesomeIcon className="cursor-pointer" icon={faCartArrowDown} />
-        </NavLink>
+        </NavLink>}
       </div>
     </div>
   );

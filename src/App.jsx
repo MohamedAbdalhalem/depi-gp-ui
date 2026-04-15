@@ -12,22 +12,80 @@ import Orders from "./pages/Orders";
 import OrderDetail from "./pages/OrderDetail";
 import ProductsPage from "./pages/ProductsPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AuthRoute from "./components/AuthRoute";
+import UnAuthRoute from "./components/UnAuthRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Home /> },
-      { path: "products", element: <ProductsPage /> },
-      { path: "sign-in", element: <SignIn /> },
-      { path: "sign-up", element: <SignUp /> },
-      { path: "products/:id", element: <ProductDetials /> },
-      { path: "cart", element: <Cart /> },
-      { path: "addresses", element: <Addresses /> },
-      { path: "profile", element: <Profile /> },
-      { path: "orders", element: <Orders /> },
-      { path: "order-details/:id", element: <OrderDetail /> },
+      {
+        index: true,
+        element: (
+          <AuthRoute>
+            <Home />
+          </AuthRoute>
+        ),
+      },
+      {
+        path: "products",
+        element: (
+          <AuthRoute>
+            <ProductsPage />
+          </AuthRoute>
+        ),
+      },
+      { path: "sign-in", element: <UnAuthRoute><SignIn /></UnAuthRoute> },
+      { path: "sign-up", element: <UnAuthRoute><SignUp /></UnAuthRoute> },
+      {
+        path: "products/:id",
+        element: (
+          <AuthRoute>
+            <ProductDetials />
+          </AuthRoute>
+        ),
+      },
+      {
+        path: "cart",
+        element: (
+          <AuthRoute>
+            <Cart />
+          </AuthRoute>
+        ),
+      },
+      {
+        path: "addresses",
+        element: (
+          <AuthRoute>
+            <Addresses />
+          </AuthRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <AuthRoute>
+            <Profile />
+          </AuthRoute>
+        ),
+      },
+      {
+        path: "orders",
+        element: (
+          <AuthRoute>
+            <Orders />{" "}
+          </AuthRoute>
+        ),
+      },
+      {
+        path: "order-details/:id",
+        element: (
+          <AuthRoute>
+            <OrderDetail />
+          </AuthRoute>
+        ),
+      },
       { path: "*", element: <NotFoundPage /> },
     ],
   },

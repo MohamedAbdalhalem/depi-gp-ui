@@ -5,9 +5,13 @@ import {
   faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 import NavItems from "./NavItems";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
+import { use } from "react";
+import { AuthContext } from "../store/AuthContext";
 
 export default function Navbar() {
+  const { setToken,token } = use(AuthContext)
+  const navigate = useNavigate()
   const tkn = localStorage.getItem("tkn");
   function handleDarkMode() {
     if (localStorage.getItem("data-theme") === "dark") {
@@ -26,7 +30,9 @@ export default function Navbar() {
   })();
 
   function handleSignOut() {
-    localStorage.removeItem('tkn')
+    localStorage.removeItem("tkn");
+    setToken(null)
+    navigate('/sign-in')
   }
   return (
     <div className="navbar bg-base-100 shadow-sm px-2 md:px-8">
@@ -52,13 +58,17 @@ export default function Navbar() {
             tabIndex={-1}
             className=" dropdown-content bg-base-100  rounded-box z-20 mt-3 w-52 p-2 shadow"
           >
-            {tkn ? (
-              <NavItems />
+            {token ? (
+              <>
+                <NavItems />
+                <li className="cursor-pointer">
+                  <p  onClick={handleSignOut} className="pb-1">
+                    Sign-out
+                  </p>
+                </li>
+              </>
             ) : (
               <>
-                <li>
-                  <p onClick={handleSignOut} className="pb-1">Sign-out</p>
-                </li>
                 <li>
                   <NavLink to="/sign-in" className="pb-1">
                     Sign-in
@@ -74,13 +84,17 @@ export default function Navbar() {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className=" menu-horizontal gap-8 px-1">
-          {tkn ? (
-            <NavItems />
+          {token ? (
+            <>
+              <NavItems />
+              <li>
+                <p onClick={handleSignOut} className="pb-1">
+                  Sign-out
+                </p>
+              </li>
+            </>
           ) : (
             <>
-              <li>
-                <p onClick={handleSignOut} className="pb-1">Sign-out</p>
-              </li>
               <li>
                 <NavLink to="/sign-in" className="pb-1">
                   Sign-in
@@ -96,12 +110,19 @@ export default function Navbar() {
           className="cursor-pointer"
           icon={faMoon}
         />
-        {tkn && <NavLink to="/profile">
-          <FontAwesomeIcon className="cursor-pointer" icon={faCircleUser} />
-        </NavLink>}
-        {tkn && <NavLink to="/cart">
-          <FontAwesomeIcon className="cursor-pointer" icon={faCartArrowDown} />
-        </NavLink>}
+        {tkn && (
+          <NavLink to="/profile">
+            <FontAwesomeIcon className="cursor-pointer" icon={faCircleUser} />
+          </NavLink>
+        )}
+        {tkn && (
+          <NavLink to="/cart">
+            <FontAwesomeIcon
+              className="cursor-pointer"
+              icon={faCartArrowDown}
+            />
+          </NavLink>
+        )}
       </div>
     </div>
   );

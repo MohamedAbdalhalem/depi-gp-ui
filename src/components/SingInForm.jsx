@@ -3,8 +3,11 @@ import CustomInput from "./CustomInput";
 import SubmitFormButton from "./SubmitFormButton";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { AuthContext } from "../store/AuthContext";
+import { use } from "react";
 
 export default function SingInForm() {
+  const {setToken} = use(AuthContext)
   const [errorMessage, setErrorMessage] = useState(false)
   const navigate = useNavigate()
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -41,9 +44,11 @@ export default function SingInForm() {
     }).then(data => {
       localStorage.setItem('tkn', data.data.token)
       navigate('/')
+      setToken(data.data.token)
       return { errors : null }
     }).catch(err => {
       setErrorMessage(true)
+      console.log(err.response.data)
       setTimeout(() => {
         setErrorMessage(false)
       },3000)

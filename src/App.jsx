@@ -14,6 +14,7 @@ import ProductsPage from "./pages/ProductsPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthRoute from "./components/AuthRoute";
 import UnAuthRoute from "./components/UnAuthRoute";
+import AuthContextProvider from "./store/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -94,9 +95,11 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient();
 export default function App() {
   return (
+    <AuthContextProvider>
     <QueryClientProvider client={queryClient}>
       {" "}
       <RouterProvider router={router} />;{" "}
-    </QueryClientProvider>
+      </QueryClientProvider>
+      </AuthContextProvider>
   );
 }

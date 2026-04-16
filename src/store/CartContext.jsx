@@ -87,6 +87,28 @@ export default function CartContextProvider({ children }) {
         });
       });
   }
+
+  function handleUpdateQuantity(cartItemId, quantity) {
+    axios
+      .put(
+        `https://depi-s-gp-backend-production.up.railway.app/api/cart/items/${cartItemId}`,
+        {
+          quantity,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      .then((_) => {
+        getCartProducts();
+      })
+      .then((err) => {
+        console.log(err);
+      });
+  }
+  // handleUpdateQuantity(44,30)
   useEffect(() => {
     getCartProducts();
   }, [token]);
@@ -99,6 +121,7 @@ export default function CartContextProvider({ children }) {
         productsNumber,
         handleAddProductToCart,
         handleRemoveProductFromCart,
+        handleUpdateQuantity,
       }}
     >
       {children}

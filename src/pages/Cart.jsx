@@ -22,7 +22,9 @@ export default function Cart() {
             Review your selection before proceeding.
           </p>
         </header>
-
+            {cartProducts.length === 0 && (
+              <p>there is no prosuct in your cart yet</p>
+            )}
         <div className="mt-10 divide-y divide-base-300    overflow-hidden ">
           {cartProducts.map((item) => (
             <CartProduct
@@ -34,11 +36,12 @@ export default function Cart() {
               quantity={item.quantity}
               productTotalPrice={item.item_total}
               stock={item.stock}
+              variantId={item.variant_id}
             />
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-6 rounded-2xl border border-base-300 bg-base-200/50 p-6 md:flex-row md:items-start md:justify-between shadow-sm">
+        <form className="mt-10 flex flex-col gap-6 rounded-2xl border border-base-300 bg-base-200/50 p-6 md:flex-row md:items-start md:justify-between shadow-sm">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-widest text-primary">
               Order Summary
@@ -57,8 +60,8 @@ export default function Cart() {
               </p>
             </div>
             {/* The user specifically asked NOT to add the checkout page, so we only provide the UI button */}
-            <button className="btn btn-neutral w-full md:w-auto min-w-[200px]rounded-xl text-xs font-semibold uppercase tracking-[0.2em]">
-              Proceed
+            <button disabled={cartProducts.length === 0 } className="btn btn-neutral w-full md:w-auto min-w-[200px]rounded-xl text-xs font-semibold uppercase tracking-[0.2em]">
+              { cartProducts.length === 0 ? 'there is no product' : 'Procced'}
             </button>
             <Link
               to="/products"
@@ -67,7 +70,7 @@ export default function Cart() {
               Continue shopping
             </Link>
           </div>
-        </div>
+        </form>
       </div>
     </section>
   );

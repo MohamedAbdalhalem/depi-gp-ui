@@ -5,6 +5,7 @@ import { useActionState } from "react";
 import { toast } from "sonner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router";
 
 export default memo(function CartProduct({
   id,
@@ -14,18 +15,19 @@ export default memo(function CartProduct({
   quantity,
   productTotalPrice,
   stock,
+  variantId
 }) {
   const { handleRemoveProductFromCart, handleUpdateQuantity } =
     use(CartContext);
-
-    async function handleUpQuantity(prevState, formData) {
-        if (quantity + 1 > stock) {
-          toast("you can't buy more than that", {
-          position: "top-right",
-          icon: <FontAwesomeIcon icon={faX} className="text-red-600" />,
-          className: "w-[25vw]",
-        })
-      }
+  const productId = variantId % 2 === 0 ? variantId / 2 : (variantId +1) / 2
+  async function handleUpQuantity(prevState, formData) {
+    if (quantity + 1 > stock) {
+      toast("you can't buy more than that", {
+        position: "top-right",
+        icon: <FontAwesomeIcon icon={faX} className="text-red-600" />,
+        className: "w-[25vw]",
+      });
+    }
     await handleUpdateQuantity(id, quantity + 1);
   }
 
@@ -43,14 +45,14 @@ export default memo(function CartProduct({
   const [downQuantityState, downQuantityAction, downQuantityPending] =
     useActionState(handleDownQuantity, null);
   return (
-    <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center hover:bg-base-200/50 bg-base-100 transition border border-base-300 mb-5  rounded-2xl">
-      <div className="h-28 w-full shrink-0 overflow-hidden rounded-xl bg-base-200 sm:h-24 sm:w-24 border border-base-300">
+    <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center hover:bg-base-200/50 bg-base-300 transition border border-base-300 mb-5  rounded-2xl">
+      <Link to={`/products/${productId}`} className="h-28 w-full shrink-0 overflow-hidden rounded-xl bg-base-200 sm:h-24 sm:w-24 border border-base-300">
         <img
           src={image}
           alt={name}
-          className="h-full w-full object-cover opacity-60"
+          className="h-full w-full object-cover"
         />
-      </div>
+      </Link>
 
       <div className="min-w-0 flex-1">
         <h2 className="font-serif text-lg font-semibold text-base-content">

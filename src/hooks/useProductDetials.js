@@ -24,6 +24,7 @@ export default function useProductDetials() {
         productDetials,
         selectedVariant,
         setSelectedVariant,
-        isLoading
+      isLoading,
+        isError
     }
 }

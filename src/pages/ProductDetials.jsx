@@ -1,10 +1,12 @@
 import { use } from "react";
 import useProductDetials from "../hooks/useProductDetials";
 import { CartContext } from "../store/CartContext";
+import ReviewsSection from "../components/ReviewsSection";
+import { Link } from "react-router";
 
 export default function ProductDetials() {
   
-  const { productDetials, selectedVariant, setSelectedVariant, isLoading } =
+  const { productDetials, selectedVariant, setSelectedVariant, isLoading,isError } =
     useProductDetials();
   const {handleAddProductToCart} = use(CartContext)
   function addProduct() {
@@ -14,10 +16,11 @@ export default function ProductDetials() {
     })
   }
   return (
-    <section className="bg-base-100 min-h-screen py-12">
+    <section className="bg-base-100 py-12">
       {/* PRODUCT TOP SECTION */}
+      {isError && <EmptyProductDetails />}
       {isLoading && <ProductDetialsSkeleton />}
-      {!isLoading && (
+      {!isLoading && !isError && (
         <div className="grid items-start gap-8 px-4 py-8 md:px-8 lg:grid-cols-7 lg:gap-12 max-w-7xl mx-auto">
           {/* Image Section */}
           <div className="relative overflow-hidden rounded-3xl bg-white shadow-sm lg:col-span-4 flex items-center justify-center p-5 sm:p-6">
@@ -141,6 +144,9 @@ export default function ProductDetials() {
         </div>
       )}
 
+      {/* REVIEWS SECTION */}
+      {!isError && !isLoading  && <ReviewsSection />}
+      
       {/* RECOMMENDED SIMILAR PRODUCTS BY INGREDIENTS */}
       {/* <div className="mt-16 px-4 md:px-8 max-w-7xl mx-auto">
         <h2 className="text-xl font-medium text-base-content mb-6 border-b border-base-300 pb-2">
@@ -161,58 +167,8 @@ export default function ProductDetials() {
         </div>
       </div> */}
 
-      {/* REVIEWS SECTION */}
-      {/* <div className="mt-20 px-4 md:px-8 max-w-7xl mx-auto border-t border-base-300 pt-16">
-        <div className="mb-8 flex items-center justify-between">
-          <h2 className="text-xl font-light text-base-content md:text-2xl">
-            Customer Reviews
-          </h2>
-          <div className="text-right">
-             <span className="text-2xl font-semibold text-base-content">4.8</span>
-             <span className="text-sm text-base-content/60 ml-2 block">Based on 128 reviews</span>
-          </div>
-        </div>
-        
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            { rating: "★★★★★", text: "My skin texture improved within 2 weeks. This serum feels lightweight and effective.", author: "Sarah M.", verified: true },
-            { rating: "★★★★☆", text: "Great for oily skin. Helped reduce pores visibility significantly.", author: "Ahmed K.", verified: true },
-            { rating: "★★★★★", text: "Absorbs quickly and gives a subtle glow. Definitely repurchasing.", author: "Lina R.", verified: false }
-          ].map((rev, i) => (
-             <div key={i} className="rounded-xl border border-base-300 bg-base-200/50 p-6 flex flex-col">
-               <p className="mb-2 text-sm text-warning">{rev.rating}</p>
-               <p className="mb-4 text-sm leading-relaxed text-base-content/80 flex-grow">
-                 {rev.text}
-               </p>
-               <div className="flex justify-between items-center text-xs">
-                 <span className="font-semibold text-base-content">{rev.author}</span>
-                 {rev.verified && <span className="text-success flex items-center gap-1"><svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg> Verified</span>}
-               </div>
-             </div>
-          ))}
-        </div>
-        
-        <div className="mx-auto mt-12 max-w-xl rounded-2xl border border-base-300 bg-base-200/30 p-6">
-          <p className="text-sm font-medium text-base-content mb-1">
-            Write a review
-          </p>
-          <p className="text-xs text-base-content/60 mb-4">Only verified buyers can submit reviews.</p>
-          <div className="flex gap-1 mb-3 text-base-content/30 cursor-pointer">
-             <span className="hover:text-warning">★</span><span className="hover:text-warning">★</span><span className="hover:text-warning">★</span><span className="hover:text-warning">★</span><span className="hover:text-warning">★</span>
-          </div>
-          <textarea
-            rows={3}
-            className="w-full rounded-xl border border-base-300 bg-base-100 px-3 py-2 text-sm focus:outline-none focus:border-primary"
-            placeholder="Share your experience..."
-          />
-          <button
-            type="button"
-            className="mt-4 rounded-xl bg-neutral px-6 py-2.5 text-xs font-semibold uppercase tracking-wide text-neutral-content w-full"
-          >
-            Submit review
-          </button>
-        </div>
-      </div> */}
+      
+      
     </section>
   );
 }
@@ -263,5 +219,44 @@ function ProductDetialsSkeleton() {
         </div>
       </div>
     </div>
+  );
+}
+
+
+
+function EmptyProductDetails() {
+  return (
+    <section className=" flex flex-col items-center justify-center px-2 text-center bg-base-100">
+
+      {/* Illustration */}
+      <div className="mb-6">
+        <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full bg-base-200 flex items-center justify-center text-5xl">
+          📦
+        </div>
+      </div>
+
+      {/* Title */}
+      <h1 className="text-2xl sm:text-3xl font-bold mb-3">
+        Product Not Found
+      </h1>
+
+      {/* Description */}
+      <p className="text-sm sm:text-base text-base-content/70 max-w-md mb-6">
+        The product you are looking for doesn't exist or has been removed.
+        Try browsing other products instead.
+      </p>
+
+      {/* OWN TAG */}
+      <span className="px-3 py-1 text-xs rounded-full bg-warning/20 text-warning font-medium mb-6">
+        own
+      </span>
+
+      {/* Actions */}
+      <div className="flex flex-col sm:flex-row gap-3">
+        <Link to='/products'  className="btn btn-primary w-full sm:w-auto">
+          Browse Products
+        </Link>
+      </div>
+    </section>
   );
 }

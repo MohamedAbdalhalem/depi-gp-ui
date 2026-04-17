@@ -4,7 +4,7 @@
   themes: winter --default, night --prefersdark;
 }
 
-@custom-variant dark (&:where([data-theme=night], [data-theme=night] *));
+@custom-variant dark (&:where([class=night], [class=night] *));
 
 body { 
   font-family: 'Times New Roman', Times, serif;

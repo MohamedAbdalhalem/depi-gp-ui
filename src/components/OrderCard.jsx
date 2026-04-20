@@ -64,7 +64,7 @@ export default function OrderCard({
       {/* ACTION */}
       <div className="mt-4 flex justify-end">
         <Link
-          to={`/order-details/${orderId}`}
+          to={`/orders/${orderId}`}
           className="btn btn-sm rounded-xl border-base-300 hover:bg-neutral hover:text-neutral-content"
         >
           View Details

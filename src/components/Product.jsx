@@ -10,8 +10,9 @@ export default memo(function Product({
   price,
   description,
   variantId,
+  stock
 }) {
-  const addProduct = useAddProduct(variantId)
+  const addProduct = useAddProduct(variantId,stock)
   return (
     <Link
       to={`/products/${id}`}

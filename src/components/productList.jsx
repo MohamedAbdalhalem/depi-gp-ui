@@ -16,6 +16,7 @@ export default memo(function ProductList({ allProduct, isLoading }) {
             description={product.description}
             price={product.variants[0].price}
             variantId= {product.variants[0].variant_id}
+            stock={product.variants[0].stock}
           />
         ))}
       </div>

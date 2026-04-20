@@ -9,7 +9,7 @@ import Cart from "./pages/Cart";
 import Addresses from "./pages/Addresses";
 import Profile from "./pages/Profile";
 import Orders from "./pages/Orders";
-import OrderDetail from "./pages/OrderDetail";
+import OrderDetials from "./pages/OrderDetials";
 import ProductsPage from "./pages/ProductsPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthRoute from "./components/AuthRoute";
@@ -95,10 +95,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "order-details/:id",
+        path: "orders/:id",
         element: (
           <AuthRoute>
-            <OrderDetail />
+            <OrderDetials />
           </AuthRoute>
         ),
       },
@@ -114,7 +114,7 @@ export default function App() {
     <AuthContextProvider>
       <CartContextProvider>
         <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />;{" "}
+          <RouterProvider router={router} />
         </QueryClientProvider>
       </CartContextProvider>
       </AuthContextProvider>

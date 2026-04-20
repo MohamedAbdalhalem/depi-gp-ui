@@ -6,13 +6,18 @@ import { Link } from "react-router";
 import useAddProduct from "../hooks/useAddProduct";
 
 export default function ProductDetials() {
-  
-  const { productDetials, selectedVariant, setSelectedVariant, isLoading,isError } =
-    useProductDetials();
-  const addProduct = useAddProduct(selectedVariant.variant_id)
+  const {
+    productDetials,
+    selectedVariant,
+    setSelectedVariant,
+    isLoading,
+    isError,
+  } = useProductDetials();
+  const addProduct = useAddProduct(
+    selectedVariant.variant_id,
+  );
   return (
     <section className="bg-base-100 py-12">
-      {/* PRODUCT TOP SECTION */}
       {isError && <EmptyProductDetails />}
       {isLoading && <ProductDetialsSkeleton />}
       {!isLoading && !isError && (
@@ -140,8 +145,8 @@ export default function ProductDetials() {
       )}
 
       {/* REVIEWS SECTION */}
-      {!isError && !isLoading  && <ReviewsSection />}
-      
+      {!isError && !isLoading && <ReviewsSection />}
+
       {/* RECOMMENDED SIMILAR PRODUCTS BY INGREDIENTS */}
       {/* <div className="mt-16 px-4 md:px-8 max-w-7xl mx-auto">
         <h2 className="text-xl font-medium text-base-content mb-6 border-b border-base-300 pb-2">
@@ -161,9 +166,6 @@ export default function ProductDetials() {
           ))}
         </div>
       </div> */}
-
-      
-      
     </section>
   );
 }
@@ -217,12 +219,9 @@ function ProductDetialsSkeleton() {
   );
 }
 
-
-
 function EmptyProductDetails() {
   return (
     <section className=" flex flex-col items-center justify-center px-2 text-center bg-base-100">
-
       {/* Illustration */}
       <div className="mb-6">
         <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full bg-base-200 flex items-center justify-center text-5xl">
@@ -231,14 +230,12 @@ function EmptyProductDetails() {
       </div>
 
       {/* Title */}
-      <h1 className="text-2xl sm:text-3xl font-bold mb-3">
-        Product Not Found
-      </h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-3">Product Not Found</h1>
 
       {/* Description */}
       <p className="text-sm sm:text-base text-base-content/70 max-w-md mb-6">
-        The product you are looking for doesn't exist or has been removed.
-        Try browsing other products instead.
+        The product you are looking for doesn't exist or has been removed. Try
+        browsing other products instead.
       </p>
 
       {/* OWN TAG */}
@@ -248,7 +245,7 @@ function EmptyProductDetails() {
 
       {/* Actions */}
       <div className="flex flex-col sm:flex-row gap-3">
-        <Link to='/products'  className="btn btn-primary w-full sm:w-auto">
+        <Link to="/products" className="btn btn-primary w-full sm:w-auto">
           Browse Products
         </Link>
       </div>

@@ -1,31 +1,8 @@
-import axios from "axios";
-import { Link, useParams } from "react-router";
-import Orders from "./Orders";
-import { use } from "react";
-import { AuthContext } from "../store/AuthContext";
-import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
+import useOrderDetials from "../hooks/useOrderDetials";
 
-export default function OrderDetail() {
-  const { token } = use(AuthContext);
-  const { id } = useParams();
-
-  async function getOrderDetials() {
-    return await axios.get(
-      `https://depi-s-gp-backend-production.up.railway.app/api/orders/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    );
-  }
-
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["getOrderDetials", id],
-    queryFn: getOrderDetials,
-  });
-  const orderDetails = data?.data?.data;
-  console.log(orderDetails);
+export default function OrderDetials() {
+  const {isError,isLoading,orderDetails} = useOrderDetials()
   return (
     <>
     {isLoading && <OrderDetailsSkeleton/>}

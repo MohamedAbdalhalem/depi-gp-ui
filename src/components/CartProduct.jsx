@@ -21,6 +21,7 @@ export default memo(function CartProduct({
     downQuantityPending,
     upQuantityAction,
     upQuantityPending,
+    optimisticValue
   } = useUpdateQuantity(id, quantity, stock);
   const productId = variantId % 2 === 0 ? variantId / 2 : (variantId + 1) / 2;
   const modalRef = useRef()
@@ -61,7 +62,7 @@ export default memo(function CartProduct({
             <input type="hidden" name="id" value={id} />
             <input type="hidden" name="quantity" value={quantity} />
             <span className="text-xs uppercase tracking-wide text-base-content px-2 font-medium">
-              Qty {quantity}
+              Qty {optimisticValue}
             </span>
 
             <button

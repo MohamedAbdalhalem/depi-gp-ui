@@ -1,31 +1,8 @@
-import axios from "axios";
 import React from "react";
-import { use } from "react";
-import { useParams } from "react-router";
-import { AuthContext } from "../store/AuthContext";
-import { useQuery } from "@tanstack/react-query";
+import useTrackingOrder from "../hooks/useTrackingOrder";
 
 export default function TrackingOrder() {
-  const { token } = use(AuthContext);
-  const { id } = useParams();
-  async function getTrackingOrder() {
-    return await axios.get(
-      `https://depi-s-gp-backend-production.up.railway.app/api/orders/${id}/tracking`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    );
-  }
-
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["getTrackingOrder", id, token],
-    queryFn: getTrackingOrder,
-  });
-
-  const trackingOrder = data?.data?.data;
-
+  const {isError,isLoading,trackingOrder} = useTrackingOrder()
   return (
     <>
       {isLoading && <OrderStatusSkeleton />}

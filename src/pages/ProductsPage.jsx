@@ -2,7 +2,7 @@ import ProductList from "../components/productList";
 import ReactPaginate from "react-paginate";
 import useGetAllProducts from "../hooks/useGetAllProducts";
 export default function ProductsPage() {
-  const { allProduct, handleUpdatePageNumber, isLoading, pageNumber ,pages } =
+  const { allProduct, handleUpdatePageNumber, isLoading, pageNumber, pages } =
     useGetAllProducts();
 
   return (
@@ -31,16 +31,34 @@ export default function ProductsPage() {
               <ul className="space-y-2 text-sm text-base-content/70">
                 <li className="flex justify-between cursor-pointer hover:text-primary transition">
                   <span className="font-medium text-base-content">All</span>{" "}
-                  <span>(24)</span>
+                  <span>(40)</span>
                 </li>
                 <li className="flex justify-between cursor-pointer hover:text-primary transition">
-                  <span>Cleansers</span> <span>(3)</span>
+                  <span>Toners</span> <span>(5)</span>
                 </li>
                 <li className="flex justify-between cursor-pointer hover:text-primary transition">
-                  <span>Serums</span> <span>(8)</span>
+                  <span>Exfoliators</span> <span>(5)</span>
+                </li>
+                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                  <span>Eye Care</span> <span>(5)</span>
+                </li>
+                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                  <span>Sun Protection</span> <span>(5)</span>
+                </li>
+                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                  <span>Masks</span> <span>(5)</span>
+                </li>
+                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                  <span>Cleansers</span> <span>(5)</span>
                 </li>
                 <li className="flex justify-between cursor-pointer hover:text-primary transition">
                   <span>Moisturizers</span> <span>(5)</span>
+                </li>
+                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                  <span>Serums</span> <span>(5)</span>
+                </li>
+                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                  <span>Serums</span> <span>(5)</span>
                 </li>
               </ul>
             </div>

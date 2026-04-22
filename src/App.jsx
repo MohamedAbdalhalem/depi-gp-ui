@@ -17,6 +17,7 @@ import UnAuthRoute from "./components/UnAuthRoute";
 import AuthContextProvider from "./store/AuthContext";
 import CartContextProvider from "./store/CartContext";
 import { Toaster } from "sonner";
+import TrackingOrder from "./pages/TrackingOrder";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -102,6 +103,7 @@ const router = createBrowserRouter([
           </AuthRoute>
         ),
       },
+      { path: "orders/:id/track", element: <TrackingOrder /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },
@@ -111,14 +113,14 @@ const queryClient = new QueryClient();
 export default function App() {
   return (
     <>
-    <AuthContextProvider>
-      <CartContextProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-        </QueryClientProvider>
-      </CartContextProvider>
+      <AuthContextProvider>
+        <CartContextProvider>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+          </QueryClientProvider>
+        </CartContextProvider>
       </AuthContextProvider>
-      <Toaster/>
-      </>
+      <Toaster />
+    </>
   );
 }

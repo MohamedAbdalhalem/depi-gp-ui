@@ -11,16 +11,16 @@ export default memo(function AddressCard({
   country,
   onDelete
 }) {
-  const modalRef = useRef()
+  const confirmRef = useRef()
   function startDelete(){
-    modalRef.current.showModal()
+    confirmRef.current.showModal()
   }
   async function finishDelete(){
     await onDelete(id)
   }
   return (
     <>
-    <ConfirmModal ref={modalRef} onRemove={finishDelete} />
+    <ConfirmModal ref={confirmRef} onRemove={finishDelete} />
       <div className="rounded-2xl border border-primary bg-base-200/50 p-6 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
           {/* Left */}

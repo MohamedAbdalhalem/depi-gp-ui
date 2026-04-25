@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 
 export default function useGetAllProducts() {
     const [pageNumber,setPageNumber] = useState(1)
+    const [category,setCategory] = useState('')
       async function getAllProducts() {
         return await axios.get(
           "https://depi-s-gp-backend-production.up.railway.app/api/products",
@@ -11,13 +12,14 @@ export default function useGetAllProducts() {
             params: {
               limit: 9,
               page: pageNumber,
+              category,
             },
           },
         );
       }
     
       const { data, isLoading, isError } = useQuery({
-        queryKey: ["getAllProducts",pageNumber],
+        queryKey: ["getAllProducts",pageNumber,category],
         queryFn: getAllProducts,
       });
     
@@ -27,7 +29,12 @@ export default function useGetAllProducts() {
         setPageNumber(selected + 1)
         sessionStorage.setItem('pageNumber',selected + 1)
       }
-    
+      
+      function handleUpdateCategory(category){
+        setCategory(prevState => category)
+        sessionStorage.setItem('category',category)
+      }
+
       useEffect(() => {
         if (sessionStorage.getItem('pageNumber')) {
           setPageNumber(+sessionStorage.getItem('pageNumber'))
@@ -38,6 +45,17 @@ export default function useGetAllProducts() {
           }
         }
       }, [])
+
+      useEffect(() => {
+        if (sessionStorage.getItem('category')) {
+          setCategory(sessionStorage.getItem('category'))
+        }
+        return () => {
+          if (!location.pathname.startsWith('/products') ) {
+            sessionStorage.removeItem('category')
+          }
+        }
+      }, [])
     return {
         pageNumber,
         isLoading,
@@ -45,7 +63,8 @@ export default function useGetAllProducts() {
         allProduct,
         pages,
         handleUpdatePageNumber,
-
+        handleUpdateCategory,
+        category,
   }
 }
 

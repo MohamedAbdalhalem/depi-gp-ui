@@ -2,8 +2,15 @@ import ProductList from "../components/productList";
 import ReactPaginate from "react-paginate";
 import useGetAllProducts from "../hooks/useGetAllProducts";
 export default function ProductsPage() {
-  const { allProduct, handleUpdatePageNumber, isLoading, pageNumber, pages } =
-    useGetAllProducts();
+  const {
+    allProduct,
+    handleUpdatePageNumber,
+    isLoading,
+    pageNumber,
+    pages,
+    handleUpdateCategory,
+    category,
+  } = useGetAllProducts();
 
   return (
     <section className="bg-base-100 min-h-screen py-12">
@@ -29,41 +36,65 @@ export default function ProductsPage() {
                 Categories
               </h3>
               <ul className="space-y-2 text-sm text-base-content/70">
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
-                  <span className="font-medium text-base-content">All</span>{" "}
+                <li
+                  onClick={() => handleUpdateCategory("")}
+                  className={`flex justify-between cursor-pointer ${category === '' && 'text-primary'}` }
+                >
+                  <span className="font-medium">All</span>{" "}
                   <span>(40)</span>
                 </li>
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                <li
+                  onClick={() => handleUpdateCategory("Toners")}
+                  className={`flex justify-between cursor-pointer ${category === 'Toners' && 'text-primary'}`}
+                >
                   <span>Toners</span> <span>(5)</span>
                 </li>
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                <li
+                  onClick={() => handleUpdateCategory("Exfoliators")}
+                  className={`flex justify-between cursor-pointer ${category === 'Exfoliators' && 'text-primary'}`}
+                >
                   <span>Exfoliators</span> <span>(5)</span>
                 </li>
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                <li
+                  onClick={() => handleUpdateCategory("Eye Care")}
+                  className={`flex justify-between cursor-pointer ${category === 'Eye Care' && 'text-primary'}`}
+                >
                   <span>Eye Care</span> <span>(5)</span>
                 </li>
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                <li
+                  onClick={() => handleUpdateCategory("Sun Protection")}
+                  className={`flex justify-between cursor-pointer ${category === 'Sun Protection' && 'text-primary'}`}
+                >
                   <span>Sun Protection</span> <span>(5)</span>
                 </li>
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                <li
+                  onClick={() => handleUpdateCategory("Masks")}
+                  className={`flex justify-between cursor-pointer ${category === 'Masks' && 'text-primary'}`}
+                >
                   <span>Masks</span> <span>(5)</span>
                 </li>
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                <li
+                  onClick={() => handleUpdateCategory("Cleansers")}
+                  className={`flex justify-between cursor-pointer ${category === 'Cleansers' && 'text-primary'}`}
+                >
                   <span>Cleansers</span> <span>(5)</span>
                 </li>
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                <li
+                  onClick={() => handleUpdateCategory("Moisturizers")}
+                  className={`flex justify-between cursor-pointer ${category === 'Moisturizers' && 'text-primary'}`}
+                >
                   <span>Moisturizers</span> <span>(5)</span>
                 </li>
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
-                  <span>Serums</span> <span>(5)</span>
-                </li>
-                <li className="flex justify-between cursor-pointer hover:text-primary transition">
+                <li
+                  onClick={() => handleUpdateCategory("Serums")}
+                  className={`flex justify-between cursor-pointer ${category === 'Serums' && 'text-primary'}`}
+                >
                   <span>Serums</span> <span>(5)</span>
                 </li>
               </ul>
             </div>
 
-            <div>
+            {/* <div>
               <h3 className="font-semibold text-sm uppercase tracking-wider text-base-content mb-4">
                 Skin Concern
               </h3>
@@ -81,7 +112,7 @@ export default function ProductsPage() {
                   Brightening
                 </label>
               </div>
-            </div>
+            </div> */}
           </aside>
 
           {/* PRODUCT GRID */}

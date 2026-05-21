@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider} from "react-router";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -134,6 +134,7 @@ export default function App() {
       <AuthContextProvider>
         <CartContextProvider>
           <QueryClientProvider client={queryClient}>
+            
             <RouterProvider router={router} />
           </QueryClientProvider>
         </CartContextProvider>

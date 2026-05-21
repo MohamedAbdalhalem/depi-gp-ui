@@ -11,7 +11,7 @@ export default function LaboratoryFavorites() {
     <section className=" backdrop-blur-md  py-12 px-2 md:px-8 ">
       <header className="flex justify-between items-end flex-wrap gap-5 gapy-4 mb-10">
         <div>
-          <h3 className="font-serif font-bold text-4xl py-1 mb-3 bg-gradient-to-r from-base-content to-base-content/70 bg-clip-text text-transparent tracking-tight">
+          <h3 className="font-serif font-bold text-4xl py-1 mb-3 bg-linear-to-r from-base-content to-base-content/70 bg-clip-text text-transparent tracking-tight">
             Laboratory Favorites
           </h3>
           <p className="text-base-content/80 py-1 text-base font-light">

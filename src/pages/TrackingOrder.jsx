@@ -8,22 +8,24 @@ export default function TrackingOrder() {
       {isLoading && <OrderStatusSkeleton />}
       {isError && <OrderStatusError />}
       {!isLoading && !isError && (
-        <div className="min-h-screen flex items-center justify-center  p-4">
-          <div className="w-full max-w-md shadow-lg rounded-2xl p-6 space-y-6">
-            <h2 className="text-xl font-bold">Order Status</h2>
+        <div className="min-h-screen flex items-center justify-center p-4">
+          <div className="w-full max-w-md shadow-xl rounded-3xl p-8 space-y-6 bg-base-100 border border-base-200">
+            <h2 className="text-2xl font-bold font-serif text-base-content tracking-tight drop-shadow-sm border-b border-base-200 pb-4">
+              Order Status
+            </h2>
 
             {/* Status */}
-            <div className="flex items-center justify-between border p-4 rounded-xl">
-              <span className="">Status</span>
-              <span className="px-3 py-1 text-sm rounded-full bg-yellow-100 text-yellow-700 font-semibold">
+            <div className="flex items-center justify-between border border-base-200/80 bg-base-200/30 p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <span className="font-semibold text-base-content/70 uppercase tracking-widest text-xs">Status</span>
+              <span className="px-4 py-1.5 text-xs rounded-full bg-warning/20 text-warning font-bold tracking-wider uppercase border border-warning/30 drop-shadow-sm">
                 {trackingOrder.status}
               </span>
             </div>
 
             {/* Shipment */}
-            <div className="flex items-center justify-between border p-4 rounded-xl">
-              <span>Shipment</span>
-              <span className="italic">
+            <div className="flex items-center justify-between border border-base-200/80 bg-base-200/30 p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <span className="font-semibold text-base-content/70 uppercase tracking-widest text-xs">Shipment</span>
+              <span className="font-medium text-sm text-base-content">
                 {trackingOrder.shipment
                   ? trackingOrder.shipment
                   : "Not shipped yet"}
@@ -31,9 +33,9 @@ export default function TrackingOrder() {
             </div>
 
             {/* Delivery */}
-            <div className="flex items-center justify-between border p-4 rounded-xl">
-              <span>Delivery</span>
-              <span className="italic">
+            <div className="flex items-center justify-between border border-base-200/80 bg-base-200/30 p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <span className="font-semibold text-base-content/70 uppercase tracking-widest text-xs">Delivery</span>
+              <span className="font-medium text-sm text-base-content">
                 {trackingOrder.delivery
                   ? trackingOrder.delivery
                   : "No delivery info"}
@@ -41,8 +43,8 @@ export default function TrackingOrder() {
             </div>
 
             {/* Message */}
-            <div className="bg-yellow-50 text-yellow-700 text-sm p-3 rounded-lg">
-              Your order is still being processed. Please wait for shipment
+            <div className="bg-info/10 border border-info/20 text-info text-sm p-5 rounded-2xl font-medium shadow-sm leading-relaxed tracking-wide">
+              Your order is still being processed. Please wait for a shipment
               update.
             </div>
           </div>

@@ -15,17 +15,17 @@ export default function ReviewsSection() {
   } = useGetReviews();
   return (
     <div className="mt-20 px-4 md:px-8 max-w-7xl mx-auto border-t border-base-300 pt-16">
-      <div className="mb-8 flex items-center justify-between">
-        <h2 className="text-xl font-light text-base-content md:text-2xl">
+      <div className="mb-10 flex items-center justify-between">
+        <h2 className="text-3xl font-serif font-bold text-base-content md:text-4xl tracking-tight drop-shadow-sm">
           Customer Reviews
         </h2>
 
         {!isLoading && (
           <div className="text-right">
-            <span className="text-2xl font-semibold text-base-content">
+            <span className="text-3xl font-bold text-base-content drop-shadow-sm">
               {avarageRating}
             </span>
-            <span className="text-sm text-base-content/60 ml-2 block">
+            <span className="text-xs uppercase tracking-widest font-semibold text-base-content/60 ml-2 block mt-1">
               Based on {reviewCount} reviews
             </span>
           </div>

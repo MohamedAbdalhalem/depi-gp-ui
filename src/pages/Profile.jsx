@@ -63,7 +63,7 @@ export default function Profile() {
             </header>
 
             {/* PROFILE OVERVIEW CARD */}
-            <div className="rounded-2xl border border-base-300 bg-base-200/40 p-6 md:p-8 shadow-sm mb-12">
+            <div className="rounded-3xl border border-base-200 bg-base-100 shadow-lg hover:shadow-xl transition-all p-6 md:p-8 mb-12">
               <div className="flex flex-col md:flex-row items-center gap-6">
                 {/* Avatar */}
                 <div className="w-24 h-24 rounded-full bg-base-300 flex items-center justify-center text-3xl font-serif text-base-content/50 border border-base-300 uppercase">

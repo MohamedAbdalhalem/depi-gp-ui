@@ -30,31 +30,31 @@ export default memo(function ReviewCard({
   return (
     <>
     <ConfirmModal ref={ref} onRemove={handleDeleteReview} />
-    <div className="relative rounded-2xl border border-base-300 bg-base-200/60 p-6 flex flex-col gap-4 hover:shadow-lg transition">
+    <div className="relative rounded-3xl border border-base-200 bg-base-100 p-6 flex flex-col gap-4 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
       {/* OWN BADGE */}
       {isOwner && (
-        <span className="absolute top-3 right-3 text-[10px] bg-primary text-white px-2 py-1 rounded-full">
+        <span className="absolute top-4 right-4 text-[10px] uppercase tracking-widest font-bold bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20">
           own
         </span>
       )}
 
       {/* USER */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shadow-sm">
           {name[0]}
         </div>
 
         <div>
-          <p className="font-semibold text-base-content">{name}</p>
-          <p className="text-xs text-base-content/60">{createdAt}</p>
+          <p className="font-bold text-base-content tracking-tight">{name}</p>
+          <p className="text-xs text-base-content/60 font-medium">{createdAt}</p>
         </div>
       </div>
 
       {/* RATING */}
-      <div>
+      <div className="drop-shadow-sm">
         <ReactStars
           count={5}
-          size={24}
+          size={22}
           color2={"#ffd700"}
           value={rating}
           edit={false}
@@ -62,12 +62,12 @@ export default memo(function ReviewCard({
       </div>
 
       {/* COMMENT */}
-      <p className="text-sm leading-relaxed text-base-content/80">{comment}</p>
+      <p className="text-sm leading-relaxed text-base-content/80 font-light italic">"{comment}"</p>
 
       {/* FOOTER */}
-      <div className="flex justify-between items-center mt-2">
-        <span className="text-success flex items-center gap-1 text-xs font-medium">
-          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+      <div className="flex justify-between items-center mt-2 border-t border-base-200/50 pt-4">
+        <span className="text-success flex items-center gap-1.5 text-xs font-bold tracking-wide">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path
               fillRule="evenodd"
               d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -81,7 +81,7 @@ export default memo(function ReviewCard({
         {isOwner && (
           <button
           onClick={startDeleteReview} 
-          className="text-xs px-3 py-1.5 rounded-lg bg-red-500 text-white  hover:bg-red-600 transition">
+          className="text-xs px-4 py-1.5 rounded-lg font-bold tracking-wider uppercase bg-error/10 text-error hover:bg-error hover:text-white transition-all duration-300">
             Delete
           </button>
         )}

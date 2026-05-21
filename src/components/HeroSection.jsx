@@ -8,25 +8,25 @@ export default function HeroSection() {
           DERMATOLOGICAL PRECISION
         </p>
 
-        <h3 className="text-base-content text-7xl font-normal mb-4 font-serif">
+        <h3 className="bg-gradient-to-r from-base-content to-base-content/60 bg-clip-text text-transparent text-6xl md:text-7xl font-normal mb-2 font-serif tracking-tight drop-shadow-sm">
           The Clinical
         </h3>
 
-        <span className="text-base-content text-7xl font-normal mb-4 block font-serif">
+        <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent text-6xl md:text-7xl font-normal mb-6 block font-serif tracking-tight drop-shadow-sm">
           Curator
         </span>
 
-        <p className="text-base-content/70 text-xl font-normal mb-4 w-2/3">
+        <p className="text-base-content/80 text-lg md:text-xl font-light mb-8 w-full md:w-3/4 leading-relaxed">
           High-fidelity skincare formulated with precision and backed by the
           rigorous standards of modern dermatological science.
         </p>
 
-        <div className="flex gap-5 flex-wrap items-center">
-          <button className="btn btn-neutral px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] rounded-xl">
+        <div className="flex gap-6 flex-wrap items-center">
+          <button className="btn btn-primary px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-full shadow-lg hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300">
             SHOP THE COLLECTION
           </button>
 
-          <button className="text-base-content/60 text-sm font-normal border-b border-base-300 p-1 hover:text-primary transition">
+          <button className="text-base-content/70 text-sm font-medium border-b-2 border-base-content/20 pb-1 hover:text-primary hover:border-primary transition-all duration-300">
             OUR PHILOSOPHY
           </button>
         </div>

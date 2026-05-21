@@ -45,32 +45,31 @@ export default function ProductDetials() {
             <div>
               {/* Title + Price */}
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-base-content leading-tight tracking-tight drop-shadow-sm">
                   {productDetials?.product_name}
                 </h1>
 
-                <span className="bg-gray-100 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full w-fit">
+                <span className="bg-base-200 text-base-content text-sm font-semibold px-4 py-1.5 rounded-full shadow-sm w-fit">
                   ${selectedVariant?.price}
                 </span>
               </div>
 
               {/* Category description */}
-              <p className="text-xs text-gray-400 mb-3">
+              <p className="text-xs text-base-content/60 tracking-wider uppercase font-medium mb-3">
                 {productDetials?.category?.description}
               </p>
 
               {/* Description */}
-              <p className="text-gray-500 text-sm sm:text-base mb-5 leading-relaxed">
+              <p className="text-base-content/80 text-sm sm:text-base mb-5 leading-relaxed font-light">
                 {productDetials?.description}
               </p>
 
               {/* Stock status */}
               <p
-                className={`text-xs font-medium mb-4 ${
-                  selectedVariant?.stock <= selectedVariant?.low_stock_threshold
-                    ? "text-red-500"
-                    : "text-green-600"
-                }`}
+                className={`text-xs font-semibold tracking-wide uppercase mb-4 ${selectedVariant?.stock <= selectedVariant?.low_stock_threshold
+                    ? "text-error"
+                    : "text-success"
+                  }`}
               >
                 {selectedVariant?.stock <= selectedVariant?.low_stock_threshold
                   ? `⚠ Only ${selectedVariant?.stock} left`
@@ -79,7 +78,7 @@ export default function ProductDetials() {
 
               {/* Volume Selector */}
               <div className="mb-6">
-                <p className="mb-2 text-xs text-gray-500 uppercase tracking-widest">
+                <p className="mb-3 text-xs text-base-content/60 uppercase tracking-widest font-semibold">
                   Select Volume
                 </p>
 
@@ -92,11 +91,10 @@ export default function ProductDetials() {
                       <button
                         key={variant.variant_id}
                         onClick={() => setSelectedVariant(variant)}
-                        className={`px-5 py-2 text-sm rounded-lg transition ${
-                          isActive
-                            ? "bg-black text-white border-2 border-black"
-                            : "border border-gray-300 text-gray-700 hover:border-black"
-                        }`}
+                        className={`px-5 py-2.5 text-sm rounded-xl transition-all duration-300 font-medium shadow-sm ${isActive
+                            ? "bg-base-content text-base-100 border-2 border-base-content shadow-md scale-105"
+                            : "bg-base-100 border-2 border-base-200 text-base-content/80 hover:border-base-content/50 hover:shadow-md"
+                          }`}
                       >
                         {variant.size}
                       </button>
@@ -112,18 +110,18 @@ export default function ProductDetials() {
               <button
                 onClick={selectedVariant?.stock && addProduct}
                 disabled={selectedVariant?.stock === 0}
-                className="w-full py-3 rounded-xl bg-black text-white text-sm font-semibold tracking-wide hover:opacity-90 active:scale-95 transition mb-4 disabled:opacity-50"
+                className="w-full py-4 rounded-full bg-base-content text-base-100 text-sm font-bold tracking-widest uppercase shadow-lg hover:shadow-xl hover:-translate-y-1 hover:opacity-80 transition-all duration-300 mb-4 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:opacity-50"
               >
                 {selectedVariant?.stock === 0 ? "Out of Stock" : "Add to Cart"}
               </button>
 
               {/* Secondary actions */}
-              <div className="flex gap-2 sm:gap-3 mb-5">
-                <button className="flex-1 py-2 border border-gray-300 rounded-lg text-sm hover:border-black transition">
+              <div className="flex gap-2 sm:gap-3 mb-6">
+                <button className="flex-1 py-3 border border-base-300 rounded-xl text-sm font-medium hover:border-base-content hover:shadow-sm transition-all duration-300">
                   ♡ Wishlist
                 </button>
 
-                <button className="flex-1 py-2 border border-gray-300 rounded-lg text-sm hover:border-black transition">
+                <button className="flex-1 py-3 border border-base-300 rounded-xl text-sm font-medium hover:border-base-content hover:shadow-sm transition-all duration-300">
                   Share
                 </button>
               </div>
@@ -133,7 +131,7 @@ export default function ProductDetials() {
                 {["VEGAN", "CLINICAL GRADE", "CRUELTY FREE"].map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600 font-medium hover:bg-gray-200 transition"
+                    className="rounded-full bg-base-200 px-4 py-1.5 text-xs text-base-content/80 font-bold tracking-wider hover:bg-base-300 transition-colors duration-300 cursor-default"
                   >
                     {tag}
                   </span>

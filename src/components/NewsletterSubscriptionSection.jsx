@@ -5,10 +5,10 @@ export default function NewsletterSubscriptionSection() {
       {" "}
       <div className="lg:col-span-5">
         {" "}
-        <h2 className="text-[#1B1C1B] font-light text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
+        <h2 className="text-[#1B1C1B] font-light text-3xl md:text-4xl lg:text-5xl leading-tight mb-6 bg-gradient-to-r from-[#1B1C1B] to-[#43474C] bg-clip-text text-transparent drop-shadow-sm">
           {" "}
           Elevate your skin health with{" "}
-          <span className="font-medium">clinical precision.</span>{" "}
+          <span className="font-semibold text-primary drop-shadow-sm tracking-wide">clinical precision.</span>{" "}
         </h2>{" "}
         <p className="text-[#43474C] text-sm md:text-base leading-relaxed max-w-md mb-8">
           {" "}
@@ -22,9 +22,9 @@ export default function NewsletterSubscriptionSection() {
           <input
             type="email"
             placeholder="Enter your email"
-            className="flex-1 px-4 py-3 border border-gray-300 rounded-md outline-none focus:border-black transition"
+            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg outline-none focus:border-black focus:ring-1 focus:ring-black shadow-sm transition-all duration-300"
           />{" "}
-          <button className="px-6 py-3 bg-black text-white text-sm tracking-wider uppercase rounded-md hover:bg-[#1B1C1B] transition">
+          <button className="px-8 py-3 bg-black text-white text-xs font-bold tracking-[0.15em] uppercase rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 hover:bg-[#1B1C1B] transition-all duration-300">
             {" "}
             Subscribe{" "}
           </button>{" "}

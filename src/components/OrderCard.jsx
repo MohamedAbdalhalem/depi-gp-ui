@@ -14,58 +14,58 @@ export default function OrderCard({
   paymentStatus,
 }) {
   return (
-    <div className="border border-base-300 rounded-2xl p-5 bg-base-200/40 hover:bg-base-200/60 transition shadow-sm mb-10">
+    <div className="border border-base-200 rounded-3xl p-6 bg-base-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 shadow-sm mb-10 group">
       {/* TOP */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         {/* LEFT */}
         <div>
-          <p className="font-semibold text-base-content">Order #{orderId}</p>
-          <p className="text-xs text-base-content/50">
+          <p className="font-bold text-base-content text-lg tracking-tight">Order #{orderId}</p>
+          <p className="text-xs text-base-content/50 uppercase tracking-widest font-semibold mt-1">
             {orderRef.slice(0, 15)}
           </p>
         </div>
 
         {/* STATUS */}
-        <span className="badge badge-warning badge-sm capitalize">
+        <span className="badge badge-warning badge-sm capitalize tracking-wider font-bold shadow-sm">
           {status}
         </span>
       </div>
 
       {/* MIDDLE */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 text-sm">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6 text-sm bg-base-200/30 p-4 rounded-2xl border border-base-200/50">
         <div>
-          <p className="text-base-content/50 text-xs">Date</p>
-          <p>{new Date(createdAt).toLocaleDateString()}</p>
+          <p className="text-base-content/50 text-xs tracking-widest uppercase font-semibold mb-1">Date</p>
+          <p className="font-medium text-base-content/80">{new Date(createdAt).toLocaleDateString()}</p>
         </div>
 
         <div>
-          <p className="text-base-content/50 text-xs">Total</p>
-          <p className="font-semibold">${total}</p>
+          <p className="text-base-content/50 text-xs tracking-widest uppercase font-semibold mb-1">Total</p>
+          <p className="font-bold text-base-content text-lg">${total}</p>
         </div>
 
         <div>
-          <p className="text-base-content/50 text-xs">Payment</p>
-          <p>${amount}</p>
-          <span className="text-xs text-warning">{paymentStatus}</span>
+          <p className="text-base-content/50 text-xs tracking-widest uppercase font-semibold mb-1">Payment</p>
+          <p className="font-medium">${amount}</p>
+          <span className="text-xs text-warning font-bold tracking-wider uppercase mt-1 block">{paymentStatus}</span>
         </div>
 
         <div>
-          <p className="text-base-content/50 text-xs">Shipping</p>
-          <p>${shipping}</p>
+          <p className="text-base-content/50 text-xs tracking-widest uppercase font-semibold mb-1">Shipping</p>
+          <p className="font-medium text-base-content/80">${shipping}</p>
         </div>
       </div>
 
       {/* BREAKDOWN */}
-      <div className="mt-4 text-xs text-base-content/60 border-t border-base-300 pt-3 flex flex-wrap gap-4">
+      <div className="mt-5 text-xs text-base-content/60 border-t border-base-200/60 pt-4 flex flex-wrap gap-6 font-medium">
         <span>Subtotal: ${subtotal}</span>
         <span>Tax: ${tax}</span>
       </div>
 
       {/* ACTION */}
-      <div className="mt-4 flex justify-end">
+      <div className="mt-5 flex justify-end">
         <Link
           to={`/orders/${orderId}`}
-          className="btn btn-sm rounded-xl border-base-300 hover:bg-neutral hover:text-neutral-content"
+          className="btn btn-sm rounded-full bg-base-200 text-base-content hover:bg-neutral hover:text-neutral-content transition-all shadow-sm group-hover:shadow-md px-6 font-bold tracking-wider uppercase"
         >
           View Details
         </Link>

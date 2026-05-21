@@ -17,7 +17,7 @@ export default function Navbar() {
   const { token , handleSignOut } = useSignOut();
   const { productsNumber } = use(CartContext);
   return (
-    <div className="navbar bg-base-100 shadow-sm px-2 md:px-8">
+    <div className="navbar bg-base-100/90 backdrop-blur-md sticky top-0 z-50 border-b border-base-200/50 px-2 md:px-8 transition-colors duration-300">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="ps-0 pe-2 lg:hidden">
